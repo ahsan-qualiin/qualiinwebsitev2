@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Rocket,
   ShieldCheck,
@@ -6,15 +6,16 @@ import {
   Package,
   Phone,
   MessageSquare,
-  Menu,
-  X,
-  CheckCircle,
+  Target,
   Search,
   Handshake,
   Lightbulb,
   ArrowRight,
-  Target
+  CheckCircle,
+  X
 } from 'lucide-react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 interface HoverContent {
   title: string;
@@ -36,31 +37,12 @@ interface ValueItemProps {
 const ZOHO_FORM_URL = "https://forms.zohopublic.in/ahsanqua1/form/ContactUs/formperma/TzzwpFLB-U53Pw9qXy5z_RMYFIEaGdOTtqUOAAIBGXY";
 const ZOHO_CALENDAR_URL = "https://calendar.zoho.in/eventreqForm/zz08021230e82267623a00a6472505c8c0829eb5861c55c25a9798dd489230ec0908778cdb4ea00b57736129c602b634bc732a6846?theme=8&l=en&tz=Asia/Kolkata";
 
-/*
- * Color Palette (extracted from design):
- * --bg-deep: #361274 (deep brand violet - main background)
- * --brand-purple: #451b92 (mid purple - panels, overlays)
- * --card-fill: #3B1B6F (card fill purple)
- * --accent-orange: #FF7F50 (coral/orange accent)
- * --cta-green: #4ADE80 (CTA green)
- * --fab-red: #C14438 (chat/FAB red)
- * --panel-white: #EDEAF2 (off-white panel background)
- * --muted: #A7A3AF (muted/secondary text gray)
- * --text: #FFFFFF (main text & icons)
- * --pattern-overlay: #6E539E (lighter diamonds/chevrons)
- */
-
 const LandingPage = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Scroll effect is handled in Navbar, or we can keep it here if Navbar is not fully self-contained for home specific transparent effect.
+  // The extracted Navbar has its own scroll logic.
 
   const openContactModal = () => setIsContactModalOpen(true);
   const closeContactModal = () => setIsContactModalOpen(false);
@@ -72,53 +54,7 @@ const LandingPage = () => {
     <div className="min-h-screen bg-[#361274] text-white font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
 
       {/* ================= NAVBAR ================= */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#371376]/90 backdrop-blur-md border-b border-white/5 py-3' : 'bg-transparent py-6'}`}>
-        <div className="flex items-center justify-between px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="flex items-center gap-2">
-            <span className="text-3xl font-bold tracking-tighter text-white">Qualiin</span>
-          </div>
-
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-10 text-sm font-medium text-gray-200">
-            {['About Us', 'Services', 'Resources', 'Careers'].map((item) => (
-              <a key={item} href="#" className="hover:text-[#FF7F50] transition-colors duration-200">{item}</a>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <button
-              onClick={openContactModal}
-              className="bg-[#4ADE80] text-black px-6 py-2 rounded-full font-bold hover:bg-green-400 transition-all shadow-lg hover:shadow-green-500/20"
-            >
-              Contact
-            </button>
-          </div>
-
-          {/* Mobile Menu Icon */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#371376] pt-24 px-6 space-y-6">
-          {['About Us', 'Services', 'Resources', 'Careers'].map((item) => (
-            <a key={item} href="#" className="block text-2xl font-bold border-b border-white/10 pb-4">{item}</a>
-          ))}
-          <button
-            onClick={() => { openContactModal(); setIsMobileMenuOpen(false); }}
-            className="bg-[#4ADE80] text-black px-6 py-3 rounded-full font-bold w-full text-lg"
-          >
-            Contact Us
-          </button>
-        </div>
-      )}
+      <Navbar openContactModal={openContactModal} />
 
       {/* ================= HERO SECTION ================= */}
       <header className="relative pt-44 pb-32 px-6 text-center bg-gradient-to-b from-[#451b92] via-[#361274] to-[#361274]">
@@ -139,7 +75,7 @@ const LandingPage = () => {
           </h1>
 
           <p className="text-[#A7A3AF] max-w-2xl mx-auto mb-12 text-lg leading-relaxed font-light">
-            Helping companies to focus on innovation and quality, <br className="hidden md:block"/>
+            Helping companies to focus on innovation and quality, <br className="hidden md:block" />
             by helping them navigate on A to Z regulations.
           </p>
 
@@ -162,7 +98,6 @@ const LandingPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Card 1: Launchpads */}
             <ServiceCard
               icon={<Rocket size={40} />}
               title="Qualiin Launchpads"
@@ -172,7 +107,6 @@ const LandingPage = () => {
               }}
             />
 
-            {/* Card 2: Compliance */}
             <ServiceCard
               icon={<ShieldCheck size={40} />}
               title="Qualiin Compliance"
@@ -182,7 +116,6 @@ const LandingPage = () => {
               }}
             />
 
-            {/* Card 3: Evidence */}
             <ServiceCard
               icon={<FileText size={40} />}
               title="Qualiin Evidence"
@@ -192,7 +125,6 @@ const LandingPage = () => {
               }}
             />
 
-            {/* Card 4: Build */}
             <ServiceCard
               icon={<Package size={40} />}
               title="Qualiin Build"
@@ -306,63 +238,7 @@ const LandingPage = () => {
       </section>
 
       {/* ================= FOOTER ================= */}
-      <footer className="bg-[#451A93] pt-20 pb-8 px-6 mt-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          {/* Column 1: Brand */}
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold tracking-tight text-white">Qualiin</h3>
-            <p className="text-sm text-gray-500">Guided by quality Driven by Innovation</p>
-            <div className="flex gap-4">
-              {['f', 't', 'in'].map((social) => (
-                <div key={social} className="w-10 h-10 bg-white hover:bg-orange-400 transition-colors rounded-full flex items-center justify-center text-[#451A93] font-bold cursor-pointer">
-                  {social}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 2: About */}
-          <div>
-            <h4 className="font-bold mb-6 text-lg">About</h4>
-            <ul className="space-y-4 text-sm text-[#A7A3AF]">
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Our team</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Careers</a></li>
-              <li><button onClick={openContactModal} className="hover:text-[#FF7F50] transition-colors">Contact us</button></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Services */}
-          <div>
-            <h4 className="font-bold mb-6 text-lg">Services</h4>
-            <ul className="space-y-4 text-sm text-[#A7A3AF]">
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Qualiin Launchpads</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Qualiin Compliance</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Qualiin Evidence</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Qualiin Build</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Resources */}
-          <div>
-            <h4 className="font-bold mb-6 text-lg">Resources</h4>
-            <ul className="space-y-4 text-sm text-[#A7A3AF]">
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Whitepapers</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">News & Events</a></li>
-              <li><a href="#" className="hover:text-[#FF7F50] transition-colors">Industries</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between text-xs text-gray-500 pt-8 border-t border-white/5">
-          <p>&copy;2025 Qualiin. All rights reserved</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition">Privacy & Policy</a>
-            <a href="#" className="hover:text-white transition">Terms & Condition</a>
-          </div>
-        </div>
-      </footer>
+      <Footer openContactModal={openContactModal} />
 
       {/* ================= FLOATING ACTION BUTTON ================= */}
       <div className="fixed bottom-8 right-8 z-50">
@@ -482,7 +358,7 @@ const ServiceCard = ({ icon, title, hoverContent }: ServiceCardProps) => {
             ))}
           </ul>
           <a href="#" className="text-[#FF7F50] text-sm font-bold mt-4 flex items-center gap-1 hover:gap-2 transition-all">
-            Learn more <ArrowRight size={14}/>
+            Learn more <ArrowRight size={14} />
           </a>
         </div>
       </div>
