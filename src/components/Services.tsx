@@ -19,7 +19,7 @@ const ServiceCard = ({ icon, title, patternColor = "#8DE5A2", backContent }: Ser
     const uniqueId = `paint_pattern_${title.replace(/\s/g, '_')}_${patternColor.replace('#', '')}`;
 
     return (
-        <div className="group relative w-[455px] h-[326px] [perspective:1000px] cursor-pointer">
+        <div className="group relative w-full max-w-[455px] h-[326px] [perspective:1000px] cursor-pointer">
             <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 {/* Front */}
                 <div className="absolute inset-0 [backface-visibility:hidden]">
@@ -89,12 +89,12 @@ const ServiceCard = ({ icon, title, patternColor = "#8DE5A2", backContent }: Ser
 export const Services = () => {
     return (
         <section className="w-full bg-primary-500 py-24">
-            <div className="max-w-[1440px] mx-auto px-[120px]">
-                <div className="flex flex-col items-center gap-[75px]">
+            <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px]">
+                <div className="flex flex-col items-center gap-12 md:gap-[75px]">
                     {/* Section Header */}
                     <div className="flex flex-col items-center gap-8">
-                        <div className="flex flex-col items-center gap-1">
-                            <h2 className="text-primary-50 text-[39px] font-bold leading-[180%] text-center">
+                        <div className="flex flex-col items-center gap-1 px-4 text-center">
+                            <h2 className="text-primary-50 text-3xl md:text-[39px] font-bold leading-[120%] md:leading-[180%]">
                                 Our Services
                             </h2>
                             <p className="text-text-primary text-[19px] font-semibold leading-[154%] tracking-[-0.377px] text-center">
@@ -104,7 +104,7 @@ export const Services = () => {
                     </div>
 
                     {/* Service Cards Grid */}
-                    <div className="flex flex-wrap justify-center items-start content-start gap-[55px] max-w-[965px] mx-auto">
+                    <div className="flex flex-wrap justify-center items-start content-start gap-6 lg:gap-[55px] max-w-[965px] mx-auto w-full">
                         <ServiceCard
                             title="Launchpads"
                             patternColor="#8DE5A2"

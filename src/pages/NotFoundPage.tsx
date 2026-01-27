@@ -29,7 +29,7 @@ const NotFoundPage = () => {
                     <h1 className="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight">
                         404
                     </h1>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6">Page Not Found</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 px-4">Page Not Found</h2>
                     <p className="text-[#A7A3AF] text-lg md:text-xl max-w-lg mx-auto mb-10">
                         Oops! The page you are looking for doesn't exist or has been moved.
                     </p>

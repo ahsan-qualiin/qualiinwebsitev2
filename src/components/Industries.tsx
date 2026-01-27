@@ -1,7 +1,7 @@
 import { Eye } from "lucide-react";
 
 const GreenPattern = () => (
-    <div className="absolute left-0 bottom-0 w-[752px] h-[435px] pointer-events-none">
+    <div className="absolute left-0 bottom-0 w-[752px] h-[435px] pointer-events-none hidden lg:block">
         <svg className="absolute left-0 top-[30px] w-[435px] h-[435px]" viewBox="0 0 435 436" fill="none">
             <path d="M434.998 0.0126873C367.558 0.0126696 363.852 -2.66415e-05 322.469 -3.74953e-05L71.1258 251.189C63.69 258.468 52.5997 262.792 41.3084 262.792C18.4503 262.792 -0.00110794 244.73 -0.00116485 222.356L-0.0012207 435.315L434.998 0.0126873Z" fill="url(#paint0_linear_green1)" fillOpacity="0.1" />
             <defs>
@@ -24,7 +24,7 @@ const GreenPattern = () => (
 );
 
 const GreenPatternRotated = () => (
-    <div className="absolute right-0 bottom-0 w-[752px] h-[435px] -rotate-90 pointer-events-none">
+    <div className="absolute right-0 bottom-0 w-[752px] h-[435px] -rotate-90 pointer-events-none hidden lg:block">
         <svg className="absolute left-0 top-[30px] w-[435px] h-[435px]" viewBox="0 0 435 436" fill="none">
             <path d="M7.90613e-06 0.0126873C67.4396 0.0126696 71.1458 -2.66415e-05 112.529 -3.74953e-05L363.872 251.189C371.308 258.468 382.398 262.792 393.69 262.792C416.548 262.792 434.999 244.73 434.999 222.356L434.999 435.315L7.90613e-06 0.0126873Z" fill="url(#paint0_linear_green3)" fillOpacity="0.1" />
             <defs>
@@ -66,15 +66,15 @@ const IndustryCard = ({ title, description, image, className }: IndustryCardProp
                 </div>
             </div>
 
-            <div className="relative bg-primary-700 h-[527px] overflow-hidden">
+            <div className="relative bg-primary-700 h-auto md:h-[527px] overflow-hidden group">
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-[487px] object-cover"
+                    className="w-full h-[300px] md:h-[487px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-[153px] bg-gradient-to-t from-primary-700 via-primary-700/30 to-transparent" />
 
-                <div className="absolute bottom-6 left-0 px-12 py-6 max-w-[644px]">
+                <div className="absolute bottom-6 left-0 px-6 md:px-12 py-6 max-w-full md:max-w-[644px]">
                     <p className="text-white text-base font-normal leading-6">{description}</p>
                 </div>
             </div>
@@ -88,9 +88,9 @@ export const Industries = () => {
             <GreenPattern />
             <GreenPatternRotated />
 
-            <div className="max-w-[1440px] mx-auto px-[120px] relative z-10">
-                <div className="flex flex-col items-center gap-12 mb-16">
-                    <h2 className="text-white text-[39px] font-bold leading-[180%] text-center">
+            <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] relative z-10">
+                <div className="flex flex-col items-center gap-12 mb-16 px-4 text-center">
+                    <h2 className="text-white text-3xl md:text-[39px] font-bold leading-[120%] md:leading-[180%] text-center">
                         Industries We Serve
                     </h2>
                     <p className="text-gray-100 text-xl font-medium leading-[30px] text-center max-w-[1168px]">

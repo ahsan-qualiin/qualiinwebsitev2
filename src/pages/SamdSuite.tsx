@@ -25,7 +25,7 @@ export default function SamdSuite() {
             <Navbar openContactModal={openContactModal} />
 
             {/* Hero Section */}
-            <section className="relative w-full pt-48 pb-32 overflow-hidden">
+            <section className="relative w-full pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
                 {/* Background Gradient */}
                 <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#450793] via-[#361274] to-primary-500 -z-10" />
                 {/* Decorative Orb */}
@@ -170,7 +170,7 @@ export default function SamdSuite() {
                                 <Code className="text-gray-400 w-5 h-5" />
                                 <span className="text-gray-400 font-mono text-sm">integration_config.json</span>
                             </div>
-                            <pre className="font-mono text-sm text-green-400 overflow-x-auto">
+                            <pre className="font-mono text-xs md:text-sm text-green-400 overflow-x-auto p-2 md:p-0">
                                 {`{
   "integration": {
     "type": "api",

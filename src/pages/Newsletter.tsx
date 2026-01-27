@@ -325,11 +325,11 @@ const LandingPage = () => {
 // Reusable Service Card with Hover Effect
 const ServiceCard = ({ icon, title, hoverContent }: ServiceCardProps) => {
   return (
-    <div className="group relative h-[340px] w-full perspective cursor-pointer">
-      <div className="relative w-full h-full duration-700 preserve-3d group-hover:my-rotate-y-180 transition-all ease-out">
+    <div className="group relative h-[340px] w-full [perspective:1000px] cursor-pointer">
+      <div className="relative w-full h-full duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all ease-out">
 
         {/* Front Side */}
-        <div className="absolute inset-0 bg-[#3B1B6F] rounded-3xl p-8 flex flex-col justify-end overflow-hidden shadow-2xl border border-white/5">
+        <div className="absolute inset-0 bg-[#3B1B6F] rounded-3xl p-8 flex flex-col justify-end overflow-hidden shadow-2xl border border-white/5 [backface-visibility:hidden]">
           {/* Pattern Overlay */}
           <div
             className="absolute inset-0 opacity-10"
@@ -350,7 +350,7 @@ const ServiceCard = ({ icon, title, hoverContent }: ServiceCardProps) => {
         </div>
 
         {/* Back Side */}
-        <div className="absolute inset-0 bg-[#EDEAF2] rounded-3xl p-8 flex flex-col text-left opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-2xl backface-hidden my-rotate-y-180 z-20">
+        <div className="absolute inset-0 bg-[#EDEAF2] rounded-3xl p-8 flex flex-col text-left opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)] z-20">
           <h4 className="text-[#361274] font-bold text-lg mb-6 leading-tight">
             {hoverContent.title}
           </h4>

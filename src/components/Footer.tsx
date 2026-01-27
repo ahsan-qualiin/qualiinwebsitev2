@@ -1,4 +1,5 @@
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Logo = () => (
     <img
@@ -11,38 +12,40 @@ const Logo = () => (
 export const CTASection = ({ openScheduleModal }: { openScheduleModal?: () => void }) => {
     return (
         <section
-            className="w-full px-[120px] py-16 flex items-center justify-between"
+            className="w-full px-6 md:px-12 lg:px-[120px] py-16 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0"
             style={{
                 background: 'linear-gradient(117deg, rgba(255, 120, 56, 0.95) -11.68%, rgba(69, 7, 147, 0.95) 50.21%, rgba(141, 229, 162, 0.95) 136.97%), #450793'
             }}
         >
-            <h2 className="text-white text-[39px] font-medium leading-[180%] flex-1">
+            <h2 className="text-white text-3xl md:text-[39px] font-medium leading-[180%] flex-1 text-center md:text-left">
                 End-to-End
                 <br />
                 Regulatory Solutions
             </h2>
 
-            <Button onClick={openScheduleModal} className="bg-secondary-500 text-secondary-900 rounded-xl px-5 py-1 h-[47px] text-[32px] font-normal hover:bg-secondary-500/90">
+            <Button onClick={openScheduleModal} className="bg-secondary-500 text-secondary-900 rounded-xl px-5 py-1 h-auto md:h-[47px] text-xl md:text-[32px] font-normal hover:bg-secondary-500/90 w-full md:w-auto mt-4 md:mt-0">
                 Schedule a call
             </Button>
         </section>
     );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Footer = ({ openContactModal }: { openContactModal?: () => void }) => {
+    void openContactModal; // Suppress unused variable error
     return (
-        <footer className="w-full bg-primary-600 px-[120px] py-16">
-            <div className="flex items-end justify-center gap-[109px]">
+        <footer className="w-full bg-primary-600 px-6 md:px-12 lg:px-[120px] py-16">
+            <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 lg:gap-[109px]">
                 {/* Left Column - Logo and Info */}
                 <div className="flex-1 flex flex-col items-start gap-5">
                     <Logo />
 
                     <div className="flex flex-col items-start gap-20 w-full">
                         <div className="flex flex-col items-start gap-[22px] w-full">
-                            <p className="text-white font-jakarta text-base font-medium leading-[150%] tracking-[-0.32px]">
-                                Our vision is to provide convenience
+                            <p className="text-white font-jakarta text-base font-medium leading-[150%] tracking-[-0.32px] uppercase">
+                                GUIDED BY QUALITY
                                 <br />
-                                and help increase your sales business.
+                                DRIVEN BY INNOVATION
                             </p>
 
                             <div className="flex items-center gap-5">
@@ -76,65 +79,65 @@ export const Footer = ({ openContactModal }: { openContactModal?: () => void }) 
                 </div>
 
                 {/* Right Column - Links */}
-                <div className="flex items-start gap-[60px]">
+                <div className="flex flex-col md:flex-row items-start gap-10 md:gap-[60px] w-full lg:w-auto">
                     {/* About */}
                     <div className="w-[157px] flex flex-col items-start gap-3">
                         <h3 className="text-primary-50 font-medium text-xl leading-[120%] px-4">About</h3>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        <Link to="/our-story" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             About Us
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        </Link>
+                        <Link to="/about" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             Our team
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        </Link>
+                        <Link to="/careers" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             Careers
-                        </Button>
-                        <Button onClick={openContactModal} variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        </Link>
+                        <Link to="/contact" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             Contact us
-                        </Button>
+                        </Link>
                     </div>
 
                     {/* Resources */}
                     <div className="w-[182px] flex flex-col items-end gap-3">
                         <h3 className="text-primary-50 font-medium text-xl leading-[120%] px-4 self-stretch text-left">Resources</h3>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        <Link to="/resources" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             Whitepapers
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        </Link>
+                        <Link to="/resources" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             Blog
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        </Link>
+                        <Link to="/resources" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             News & Events
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full">
+                        </Link>
+                        <Link to="/industries" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left">
                             Industries
-                        </Button>
+                        </Link>
                     </div>
 
                     {/* Services */}
                     <div className="w-[179px] flex flex-col items-end gap-3">
                         <h3 className="text-primary-50 font-medium text-xl leading-[120%] px-4 self-stretch text-left">Services</h3>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full underline">
+                        <Link to="/services" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left underline">
                             Regulatory submissions
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full underline">
+                        </Link>
+                        <Link to="/services" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left underline">
                             ISO Implementation
-                        </Button>
-                        <Button variant="ghost" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 h-auto py-1 hover:bg-white/10 justify-start w-full underline">
+                        </Link>
+                        <Link to="/services" className="text-text-primary font-pt text-[17px] font-normal leading-[120%] px-4 py-1 hover:text-white transition-colors block w-full text-left underline">
                             CE Marking
-                        </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
 
             {/* Bottom Links */}
             <div className="flex items-center justify-between mt-16 pt-6">
-                <a href="#" className="text-white font-jakarta text-base font-semibold leading-[150%] tracking-[-0.32px] hover:underline">
+                <Link to="/privacy-policy" className="text-white font-jakarta text-base font-semibold leading-[150%] tracking-[-0.32px] hover:underline">
                     Privacy & Policy
-                </a>
-                <a href="#" className="text-white font-jakarta text-base font-semibold leading-[150%] tracking-[-0.32px] hover:underline">
+                </Link>
+                <Link to="/terms-and-conditions" className="text-white font-jakarta text-base font-semibold leading-[150%] tracking-[-0.32px] hover:underline">
                     Terms & Conditions
-                </a>
+                </Link>
             </div>
         </footer>
     );

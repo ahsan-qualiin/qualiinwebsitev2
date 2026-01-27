@@ -7,6 +7,7 @@ interface SEOProps {
     type?: string;
     name?: string;
     image?: string;
+    keywords?: string;
 }
 
 export default function SEO({
@@ -15,18 +16,21 @@ export default function SEO({
     canonical,
     type = 'website',
     name = 'Qualiin',
-    image = 'https://qualiin-images.netlify.app/logo/logo_icon.svg'
+    image = 'https://iili.io/fNsZDTN.md.webp',
+    keywords = "Medical Device Regulation, CDSCO Registration, US FDA 510(k), CE Mark MDR IVDR, ISO 13485 QMS, SaMD Compliance, MedTech Regulatory Consultants"
 }: SEOProps) {
     return (
         <Helmet>
             {/* Standard metadata tags */}
             <title>{title}</title>
             <meta name='description' content={description} />
+            <meta name='keywords' content={keywords} />
             {canonical && <link rel="canonical" href={canonical} />}
 
             {/* End standard metadata tags */}
 
             {/* Facebook tags */}
+            <meta property="og:site_name" content="Qualiin" />
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -35,7 +39,7 @@ export default function SEO({
 
             {/* Twitter tags */}
             <meta name="twitter:creator" content={name} />
-            <meta name="twitter:card" content={type} />
+            <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             {/* End Twitter tags */}

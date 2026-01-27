@@ -28,7 +28,7 @@ export const Hero = ({ openContactModal }: { openContactModal?: () => void }) =>
 
             {/* Left decorative border */}
             <svg
-                className="absolute left-[-9px] top-[140px] w-[606px] h-[722px]"
+                className="hidden lg:block absolute left-[-9px] top-[140px] w-[606px] h-[722px]"
                 viewBox="0 0 598 722"
                 fill="none"
             >
@@ -49,7 +49,7 @@ export const Hero = ({ openContactModal }: { openContactModal?: () => void }) =>
 
             {/* Right decorative border */}
             <svg
-                className="absolute right-0 top-[146px] w-[606px] h-[722px]"
+                className="hidden lg:block absolute right-0 top-[146px] w-[606px] h-[722px]"
                 viewBox="0 0 606 722"
                 fill="none"
             >
@@ -71,16 +71,16 @@ export const Hero = ({ openContactModal }: { openContactModal?: () => void }) =>
             {/* Chat icon button */}
             <button
                 onClick={openContactModal}
-                className="absolute right-[97px] bottom-[0px] w-[95px] h-[95px] bg-accent-500 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+                className="absolute right-4 bottom-4 md:right-[97px] md:bottom-[0px] w-[64px] h-[64px] md:w-[95px] md:h-[95px] bg-accent-500 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform z-20"
             >
                 <svg width="45" height="45" viewBox="0 0 45 45" fill="none">
                     <path d="M3.71796 40.8974V7.4359C3.71796 6.41347 4.08201 5.5382 4.8101 4.8101C5.5382 4.08201 6.41347 3.71796 7.4359 3.71796H37.1795C38.2019 3.71796 39.0772 4.08201 39.8053 4.8101C40.5334 5.5382 40.8974 6.41347 40.8974 7.4359V29.7436C40.8974 30.766 40.5334 31.6413 39.8053 32.3694C39.0772 33.0975 38.2019 33.4615 37.1795 33.4615H11.1539L3.71796 40.8974ZM9.57373 29.7436H37.1795V7.4359H7.4359V31.8349L9.57373 29.7436Z" fill="#FEF7FF" />
                 </svg>
             </button>
 
-            <div className="max-w-[1440px] mx-auto px-0 py-[134px] flex flex-col items-center gap-7">
+            <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-20 lg:py-[134px] flex flex-col items-center gap-7 relative z-10">
                 <div className="w-full flex flex-col items-center justify-center gap-8">
-                    <h1 className="text-center text-white font-bold text-[64px] leading-[150%] tracking-[-1.28px] max-w-[1392px] px-4">
+                    <h1 className="text-center text-white font-bold text-4xl md:text-5xl lg:text-[64px] leading-[120%] lg:leading-[150%] tracking-[-1.28px] max-w-[1392px] px-0 md:px-4">
                         GUIDED BY <span className="text-accent-500">QUALITY</span>
                         <br />
                         DRIVEN BY <span className="text-accent-500">INNOVATION</span>
